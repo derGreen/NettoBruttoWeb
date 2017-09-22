@@ -64,7 +64,7 @@ background-color: #ccc;
 box-shadow:  5px 5px 30px #333 ;
 }
 
-input[type=number] {
+input[type=text] {
     width: 120px;
     padding: 12px 20px;
     margin: 8px 8px;
@@ -124,21 +124,21 @@ width: 50%;
 
 					<div class="netto">
 	      		<label>Netto</label><br/>
-	      		<input type="number" name="netto" id="netto"  >
+	      		<input type="text" name="netto" id="netto"  >
 					</div>
 
 					<div class="mwstVal">
 	      		<label>MWSt. €</label><br/>
-	      		<input type="number" name="mwstVal" id="mwstVal" >
+	      		<input type="text" name="mwstVal" id="mwstVal" >
 						</div>
 <div class="mwstPer">
 	      		<label>MWSt. %</label><br/>
-	      		<input type="number" name="mwstPer" id="mwstPer"  >
+	      		<input type="text" name="mwstPer" id="mwstPer"  >
 					</div>
 
 					<div class="brutto">
 	      		<label>Brutto</label><br/>
-	      		<input type="number" name="brutto" id="brutto">
+	      		<input type="text" name="brutto" id="brutto">
 					</div>
 
 
@@ -155,14 +155,14 @@ width: 50%;
 </div>
  <script  type="text/javascript">
 function rechner() {
-	let netto = document.forms.myForm.netto.value;
-	let brutto = document.forms.myForm.brutto.value;
-	let mwstVal = document.forms.myForm.mwstVal.value;
-	let mwstPer = document.forms.myForm.mwstPer.value;
-	alert("function aufgerufen");
+	let netto = +document.forms.myForm.netto.value;
+	let brutto = +document.forms.myForm.brutto.value;
+	let mwstVal = +document.forms.myForm.mwstVal.value;
+	let mwstPer = +document.forms.myForm.mwstPer.value;
+
 	let array = [netto,brutto,mwstVal,mwstPer];
 	for (var i = 0; i < array.length; i++){
-		if ( typeof array[i] !== "number" ) {
+		if ( typeof array[i] !== number ) {
 			alert( array[i] + " ist als Wert nicht zulässig\nEs können nur Zahlen genutzt werden!");
 		}
 	}
