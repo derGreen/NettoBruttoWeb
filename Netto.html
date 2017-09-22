@@ -110,12 +110,15 @@ padding: 15px 25px;
   </div>
  <script>
 
-  function doIt(param) {
-
+  function doIt(param) { // param muss noch übergeben werden, die zahl komm aktuelle aus document.form..... usw. 
+  
+	if (typeof param !== "number" ) {
+		alert(param+" ist als Wert nicht zulässig\nEs können nur Zahlen genutzt werden!");
+	} else {
     var netto =  document.forms.myForm.netto.value;
 
     document.forms.myForm.brutto.value = (netto/100*119);
-
+}
   };
 
  </script>
