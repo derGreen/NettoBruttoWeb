@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<title> Netto Brutto Rechner - Patrick Velte </title>
+	<meta name="description" content="aufgabe für die KSM Marbrug">
+
+  <style>
+/*
+Farbpalette:
+
+gelb: #DEA51A
+cyan: #35D39A
+braun: #3B2E10
+Pink_d: #57006E
+pink_l: #783A87
+
+
+ */
+  * {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 33.33%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other on smaller screens (600px wide or less) */
+@media (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
+
+html {
+  background-color: #3B2E10;
+  color: #DEA51A;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+}
+.formBox {
+width: 30%;
+margin: centre;
+padding: 10px;
+background-color: #57006E;
+box-shadow: 10px 10px 5px #000 ;
+}
+input[type=text] {
+    width: 120px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+button {
+color :#008800;
+font-weight: bold;
+font-size: 50p;
+background-color: #00bb00;
+border: solid 3px #00ff00;
+padding: 15px 25px;
+
+}
+  </style>
+</head>
+<body>
+
+  <div id="logo" >
+    Hier kommt ein Logo hin
+  </div>
+  <div class="row">
+
+<div class="column">
+
+</div>
+<div class="column">
+  <div class="formBox">
+
+  <form action="javascript:doIt()" id="myForm">
+      <label>Netto</label><br/>
+      <input type="text" name="netto" id="netto" >
+<br/>
+      <label>MWSt. €</label><br/>
+      <input type="text" name="mwstVal" id="mwstVal" >
+<br/>
+      <label>MWSt. %</label><br/>
+      <input type="text" name="mwstPer" id="mwstPer" >
+<br/>
+      <label>Brutto</label><br/>
+      <input type="text" name="brutto" id="brutto" >
+<br/>
+      <button type="reset">Reset</button>
+      <button type="action">Berechnen</button>
+</form>
+</div>
+</div>
+<div class="column">
+
+</div>
+  </div>
+ <script>
+
+  function doIt(param) {
+
+    var netto =  document.forms.myForm.netto.value;
+
+    document.forms.myForm.brutto.value = (netto/100*119);
+
+  };
+
+ </script>
+</body>
+</html>
