@@ -1,0 +1,12 @@
+function
+
+form element starten eine funtionen, diese übertzrägt alle werte auf dem Text feldenr in Variablem (var or let)
+ dan wir eine function in der function aufgerufen mit allen 4 argumenten, Clac( netto, brutto, mwst€, mwst%) {}
+dor wird geprüft welche felder gefüllt sind. und duch if else die richige formel angewendet.
+
+für das ausführn der functina mit keyUp event: 
+wenn nur ein feld gefülltist geibt ed den "IF" fall das es wartet
+
+wen drei ausgefüllt sich muss man sehen wie man nur die letzten bieden speichert....
+
+ansonsten eben mit buttons arbeiten.  
