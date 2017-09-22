@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-color: lightblue;
+      }
+
+      h1 {
+        color: white;
+        text-align: center;
+        font-family: verdana;
+        font-size: 80px;
+      }
+
+      form {
+        font-family: verdana;
+        font-size: 20px;
+        text-align: center;
+      }
+      </style>
+
+  </head>
+  <body>
+
+    <h1>Nettonator 5000</h1>
+
+    <form name="MyForm">
+      <p>Netto</p>
+      <input value="0" name="netto" onkeyup="calc()" type="text" >
+        <br/>
+      <p>MWSt. Wert</p>
+      <input value="0" onkeyup="calc()" name="mwst_val" type="text">
+      <p>MWSt. %</p>
+      <input value="0" onkeyup="calc()" name="mwst_per" type="text">
+        <br/>
+      <p>Brutto</p>
+      <input value="0" onkeyup="calc()" name="brutto" type="text">
+    </form>
+
+    <script type="text/javascript">
+    function bruttoZuNetto() {
+      var netto = +document.forms["MyForm"]["netto"].value;
+      var mwst_val = +document.forms["MyForm"]["mwst_val"].value;
+      var mwst_per = +document.forms["MyForm"]["mwst_per"].value;
+      var brutto = netto*(mwst_per/100)+netto ;
+      document.forms["MyForm"]["brutto"].value = brutto;
+    };
+    function calc() {
+      var netto = +document.forms["MyForm"]["netto"].value;
+      var mwst_val = +document.forms["MyForm"]["mwst_val"].value;
+      var mwst_per = +document.forms["MyForm"]["mwst_per"].value;
+      var brutto = netto*(mwst_per/100)+netto;
+      var mwst_val = netto*(mwst_per/100);
+      document.forms["MyForm"]["brutto"].value = brutto;
+      document.forms["MyForm"]["mwst_val"].value = mwst_val;
+    };
+    </script>
+
+  </body>
+</html>

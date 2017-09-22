@@ -6,17 +6,7 @@
 	<meta name="description" content="aufgabe für die KSM Marbrug">
 
   <style>
-/*
-Farbpalette:
 
-gelb: #DEA51A
-cyan: #35D39A
-braun: #3B2E10
-Pink_d: #57006E
-pink_l: #783A87
-
-
- */
   * {
     margin: 0px;
     padding: 0px;
@@ -24,9 +14,16 @@ pink_l: #783A87
 }
 
 /* Create three equal columns that floats next to each other */
+.wrapper {
+max-width: 100vw;
+margin:auto;
+
+}
+
 .column {
-    float: left;
+  float: left;
     width: 33.33%;
+		position: relative;
 }
 
 /* Clear floats after the columns */
@@ -34,6 +31,7 @@ pink_l: #783A87
     content: "";
     display: table;
     clear: both;
+		width: 100%;
 }
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other on smaller screens (600px wide or less) */
@@ -44,83 +42,149 @@ pink_l: #783A87
 }
 
 html {
-  background-color: #3B2E10;
-  color: #DEA51A;
+  background-color: #aaa;
+  color: #000;
   font-family: Verdana, Helvetica, Arial, sans-serif;
+	display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo {
+color: #555;
+font-size: 100px;
+font-family: fantasy;
 }
 .formBox {
-width: 30%;
+width: 280px;
+
 margin: centre;
 padding: 10px;
-background-color: #57006E;
-box-shadow: 10px 10px 5px #000 ;
+background-color: #ccc;
+box-shadow:  5px 5px 30px #333 ;
 }
-input[type=text] {
+
+input[type=number] {
     width: 120px;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 8px 8px;
     box-sizing: border-box;
+
 }
 
 button {
-color :#008800;
+
+color :#000;
 font-weight: bold;
 font-size: 50p;
-background-color: #00bb00;
-border: solid 3px #00ff00;
+background-color: #dadada;
+border: solid 2px #afafaf;
 padding: 15px 25px;
+box-shadow: -2px -2px 8px #222 inset;
+margin: 8px auto;
+display: block;
 
+}
+
+.netto {
+margin: auto;
+width: 50%;
+}
+
+.mwstVal {
+float: left;
+}
+
+.mwstPer {
+
+}
+
+
+
+.brutto {
+	margin: auto;
+width: 50%;
 }
   </style>
 </head>
 <body>
-
+<div class="wrapper">
   <div id="logo" >
-    Hier kommt ein Logo hin
+    <p>BRUTTONETTOR 3000 !!!</p>
   </div>
   <div class="row">
 
-<div class="column">
+		<div class="column">
+<br/>
+		</div>
+		<div class="column">
+  		<div class="formBox">
 
-</div>
-<div class="column">
-  <div class="formBox">
+  			<form action="javascript:rechner()" id="myForm">
 
-  <form action="javascript:doIt()" id="myForm">
-      <label>Netto</label><br/>
-      <input type="text" name="netto" id="netto" >
-<br/>
-      <label>MWSt. €</label><br/>
-      <input type="text" name="mwstVal" id="mwstVal" >
-<br/>
-      <label>MWSt. %</label><br/>
-      <input type="text" name="mwstPer" id="mwstPer" >
-<br/>
-      <label>Brutto</label><br/>
-      <input type="text" name="brutto" id="brutto" >
-<br/>
-      <button type="reset">Reset</button>
-      <button type="action">Berechnen</button>
-</form>
-</div>
-</div>
-<div class="column">
+					<div class="netto">
+	      		<label>Netto</label><br/>
+	      		<input type="number" name="netto" id="netto"  >
+					</div>
 
-</div>
+					<div class="mwstVal">
+	      		<label>MWSt. €</label><br/>
+	      		<input type="number" name="mwstVal" id="mwstVal" >
+						</div>
+<div class="mwstPer">
+	      		<label>MWSt. %</label><br/>
+	      		<input type="number" name="mwstPer" id="mwstPer"  >
+					</div>
+
+					<div class="brutto">
+	      		<label>Brutto</label><br/>
+	      		<input type="number" name="brutto" id="brutto">
+					</div>
+
+
+	      		<button type="action">Berechnen</button>
+
+						<button type="reset">Reset</button>
+				</form>
+			</div>
+		</div>
+		<div class="column">
+<br/>
+		</div>
   </div>
- <script>
-
-  function doIt(param) { // param muss noch übergeben werden, die zahl komm aktuelle aus document.form..... usw. 
-  
-	if (typeof param !== "number" ) {
-		alert(param+" ist als Wert nicht zulässig\nEs können nur Zahlen genutzt werden!");
-	} else {
-    var netto =  document.forms.myForm.netto.value;
-
-    document.forms.myForm.brutto.value = (netto/100*119);
-}
+</div>
+ <script  type="text/javascript">
+function rechner() {
+	let netto = document.forms.myForm.netto.value;
+	let brutto = document.forms.myForm.brutto.value;
+	let mwstVal = document.forms.myForm.mwstVal.value;
+	let mwstPer = document.forms.myForm.mwstPer.value;
+	alert("function aufgerufen");
+	let array = [netto,brutto,mwstVal,mwstPer];
+	for (var i = 0; i < array.length; i++){
+		if ( typeof array[i] !== "number" ) {
+			alert( array[i] + " ist als Wert nicht zulässig\nEs können nur Zahlen genutzt werden!");
+		}
+	}
   };
 
- </script>
+	function bruttoZuNetto() {
+		var netto = +document.forms["MyForm"]["netto"].value;
+		var mwst_val = +document.forms["MyForm"]["mwst_val"].value;
+		var mwst_per = +document.forms["MyForm"]["mwst_per"].value;
+		var brutto = netto*(mwst_per/100)+netto ;
+		document.forms["MyForm"]["brutto"].value = brutto;
+	};
+
+	function calc() {
+		var netto = +document.forms["MyForm"]["netto"].value;
+		var mwst_val = +document.forms["MyForm"]["mwst_val"].value;
+		var mwst_per = +document.forms["MyForm"]["mwst_per"].value;
+		var brutto = netto*(mwst_per/100)+netto;
+		var mwst_val = netto*(mwst_per/100);
+		document.forms["MyForm"]["brutto"].value = brutto;
+		document.forms["MyForm"]["mwst_val"].value = mwst_val;
+	};
+	</script>
 </body>
 </html>
