@@ -61,7 +61,7 @@ width: 280px;
 margin: centre;
 padding: 10px;
 background-color: #ccc;
-box-shadow:  5px 5px 30px #333 ;
+box-shadow:  5px 5px 30px rgba(0,0,0,0.8);
 }
 
 input[type=number] {
@@ -73,16 +73,21 @@ input[type=number] {
 }
 
 button {
-
+width: 120px;
 color :#000;
 font-weight: bold;
 font-size: 50p;
 background-color: #dadada;
 border: solid 2px #afafaf;
-padding: 15px 25px;
+padding: 5px 25px;
 box-shadow: -2px -2px 8px #222 inset;
 margin: 8px auto;
 display: block;
+}
+
+.big {
+padding:15px  ;
+
 
 }
 
@@ -104,6 +109,11 @@ float: left;
 .brutto {
 	margin: auto;
 width: 50%;
+
+.footer{
+float: left;
+
+}
 }
   </style>
 </head>
@@ -112,10 +122,12 @@ width: 50%;
   <div id="logo" >
     <p>BRUTTONETTOR 3000 !!!</p>
   </div>
+<div class="content">
+
   <div class="row">
 
 		<div class="column">
-<br/>
+			<br/>
 		</div>
 		<div class="column">
   		<div class="formBox">
@@ -131,7 +143,7 @@ width: 50%;
 	      		<label>MWSt. €</label><br/>
 	      		<input type="number" name="mwstVal" id="mwstVal" >
 						</div>
-<div class="mwstPer">
+					<div class="mwstPer">
 	      		<label>MWSt. %</label><br/>
 	      		<input type="number" name="mwstPer" id="mwstPer"  >
 					</div>
@@ -142,17 +154,24 @@ width: 50%;
 					</div>
 
 
-	      		<button type="action">Berechnen</button>
+	      		<button class="big" type="action">Berechnen</button>
 
 						<button type="reset">Reset</button>
 				</form>
 			</div>
+
 		</div>
 		<div class="column">
-<br/>
+			<br/>
 		</div>
   </div>
 </div>
+	<div class="footer">
+		<p> 2017 Patrick Velte</p>
+	</div>
+</div>
+
+
  <script  type="text/javascript">
 function rechner() {
 	let netto = document.forms.myForm.netto.value;
