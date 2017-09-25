@@ -174,87 +174,87 @@
             var brutto = +document.forms.myForm.brutto.value;
             var mwstVal = +document.forms.myForm.mwstVal.value;
             var mwstPer = +document.forms.myForm.mwstPer.value;
-                    
-            if ( brutto != 0 && netto > brutto) {
-            alert ("Brutto darf nich weniger als Netto sein")
+
+            if (brutto != 0 && netto > brutto) {
+                alert("Brutto darf nich weniger als Netto sein")
             }
 
             else if (netto != 0 && brutto != 0) {                //rechne MWSt in € und % aus
-         
+
                 let mVal = 0;
                 let mPer = 0;
 
                 mVal = brutto - netto;
-                mPer = (brutto - netto)/netto*100;      // passt 
-                
+                mPer = (brutto - netto) / netto * 100;              // passt
+
 
                 document.forms.myForm.mwstVal.value = mVal;
                 document.forms.myForm.mwstPer.value = mPer;
-        }
-        else if (netto != 0 && mwstVal != 0) {              //rechne Brutto und MWSt in % aus
-          
-            let brutto = 0;
-            let mPer = 0;
+            }
+            else if (netto != 0 && mwstVal != 0) {              //rechne Brutto und MWSt in % aus
 
-            brutto = netto + mwstVal;
-            mPer = (mwstVal / netto) * 100 ;        // passt
+                let brutto = 0;
+                let mPer = 0;
 
-            document.forms.myForm.brutto.value = brutto;
-            document.forms.myForm.mwstPer.value = mPer;
-        }
-        else if (netto != 0 && mwstPer != 0) {              //rechne Brutto und MWSt in € aus
-        
-            let brutto = 0;
-            let mVal = 0;
+                brutto = netto + mwstVal;
+                mPer = (mwstVal / netto) * 100;                     // passt
 
-            brutto = netto * (mwstPer / 100) + netto;           //passt
-            mVal = netto * (mwstPer / 100);
+                document.forms.myForm.brutto.value = brutto;
+                document.forms.myForm.mwstPer.value = mPer;
+            }
+            else if (netto != 0 && mwstPer != 0) {              //rechne Brutto und MWSt in € aus
 
-            document.forms.myForm.brutto.value = brutto;
-            document.forms.myForm.mwstVal.value = mVal;
-        }
-        else if (brutto != 0 && mwstVal != 0) {             //rechne Netto und MWSt in % aus
-         
-            let netto = 0;
-            let mPer = 0;
+                let brutto = 0;
+                let mVal = 0;
 
-            netto = brutto - mwstVal;
-            mPer = mwstVal / (brutto - mwstVal)*100;        //passt
+                brutto = netto * (mwstPer / 100) + netto;           //passt
+                mVal = netto * (mwstPer / 100);
 
-            document.forms.myForm.netto.value = netto;
-            document.forms.myForm.mwstPer.value = mPer;
-        }
-        else if (brutto != 0 && mwstPer != 0) {             //rechne Netto und MWSt in € aus
-            
-            let netto = 0;
-            let mVal = 0;
+                document.forms.myForm.brutto.value = brutto;
+                document.forms.myForm.mwstVal.value = mVal;
+            }
+            else if (brutto != 0 && mwstVal != 0) {             //rechne Netto und MWSt in % aus
 
-            netto = brutto - mwstVal;
-            mVal = mwstPer ;
-           
-            document.forms.myForm.netto.value = netto;
-            document.forms.myForm.mwstVal.value = mVal;
-        }
-        else if (mwstVal != 0 && mwstPer != 0) {            //rechne Brutto und Netto aus
-       
-            let netto = 0;
-            let brutto = 0;
+                let netto = 0;
+                let mPer = 0;
 
-            netto = (100 * mwstPer) / mwstVal;
-            brutto = mwstPer * mwstVal;
+                netto = brutto - mwstVal;
+                mPer = mwstVal / (brutto - mwstVal) * 100;        //passt
 
-            document.forms.myForm.brutto.value = brutto;
-            document.forms.myForm.netto.value = netto;
-        }
-        else {                                              //es ist ein Wert zu wenig angegeben
-            alert("es ist ein Wert zu wenig angegeben")
-        } 
+                document.forms.myForm.netto.value = netto;
+                document.forms.myForm.mwstPer.value = mPer;
+            }
+            else if (brutto != 0 && mwstPer != 0) {             //rechne Netto und MWSt in € aus
+
+                let netto = 0;
+                let mVal = 0;
+
+                netto = brutto - (brutto / (100+mwstPer)) * mwstPer;      // passt
+                mVal = (brutto / (100 + mwstPer)) * mwstPer;
+
+                document.forms.myForm.netto.value = netto;
+                document.forms.myForm.mwstVal.value = mVal;
+            }
+            else if (mwstVal != 0 && mwstPer != 0) {            //rechne Brutto und Netto aus
+
+                let netto = 0;
+                let brutto = 0;
+
+                netto = (100 * mwstPer) / mwstVal;               // komplett falsch !!!!!
+                brutto = mwstPer * mwstVal;
+
+                document.forms.myForm.brutto.value = brutto;           
+                document.forms.myForm.netto.value = netto;
+            }
+            else {                                              //es ist ein Wert zu wenig angegeben
+                alert("es ist ein Wert zu wenig angegeben")
+            }
 
         };
 
 
 
-   
+
     </script>
 </body>
 </html>
