@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title> Netto Brutto Rechner - Patrick Velte </title>
+    <meta name="description" content="Aufgabe für die KSM Marbrug">
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            border: none;
+        }
+
+        /* Create three equal columns that floats next to each other */
+        .wrapper {
+            max-width: 100vw;
+            margin: auto;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            position: relative;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+            width: 100%;
+        }
+
+        /* Responsive layout - makes the three columns stack on top of each other instead of next to each other on smaller screens (600px wide or less) */
+        @media (max-width: 600px) {
+            .column {
+                width: 100%;
+            }
+        }
+
+        html {
+            background-color: #aaa;
+            color: #000;
+            font-family: Verdana, Helvetica, Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #logo {
+            color: #555;
+            font-size: 100px;
+            font-family: fantasy;
+        }
+
+        .formBox {
+            width: 280px;
+            margin: auto;
+            padding: 10px;
+            background-color: #ccc;
+            box-shadow: 5px 5px 30px rgba(0,0,0,0.8);
+        }
+
+        input[type=number] {
+            width: 120px;
+            padding: 12px 20px;
+            margin: 8px 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 120px;
+            color: #555;
+            font-weight: bold;
+            font-size: 18px;
+            background-color: #dadada;
+            border: solid 2px #888;
+            padding: 5px 25px;
+            box-shadow: -2px -2px 8px #222 inset;
+            margin: 8px auto;
+            display: block;
+        }
+
+        .big {
+            padding: 15px;
+        }
+
+        .netto {
+            margin: auto;
+            width: 50%;
+        }
+
+        .mwstVal {
+            float: left;
+        }
+
+        .mwstPer {
+        }
+
+        .brutto {
+            margin: auto;
+            width: 50%;
+				}
+
+        .footer {
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div id="logo">
+            <p>BRUTTONETTOR 3000 !!!</p>
+        </div>
+        <div class="content">
+
+            <div class="row">
+
+                <div class="column">
+                    <br />
+                </div>
+                <div class="column">
+                    <div class="formBox">
+
+                        <form action="javascript:rechner()" id="myForm">
+
+                            <div class="netto">
+                                <label>Netto</label><br />
+                                <input type="number" name="netto" id="netto">
+                            </div>
+
+                            <div class="mwstVal">
+                                <label>MWSt. €</label><br />
+                                <input type="number" name="mwstVal" id="mwstVal">
+                            </div>
+                            <div class="mwstPer">
+                                <label>MWSt. %</label><br />
+                                <input type="number" name="mwstPer" id="mwstPer">
+                            </div>
+
+                            <div class="brutto">
+                                <label>Brutto</label><br />
+                                <input type="number" name="brutto" id="brutto">
+                            </div>
+
+
+                            <button class="big" type="action">Berechnen</button>
+
+                            <button type="reset">Reset</button>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="column">
+                    <br />
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p> 2017 Patrick Velte</p>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+
+        function rechner() {
+            var netto = +document.forms.myForm.netto.value;
+            var brutto = +document.forms.myForm.brutto.value;
+            var mwstVal = +document.forms.myForm.mwstVal.value;
+            var mwstPer = +document.forms.myForm.mwstPer.value;
+
+            if (brutto != 0 && netto > brutto) {
+                alert("Brutto darf nich weniger als Netto sein")
+            }
+
+            else if (netto != 0 && brutto != 0) {                //rechne MWSt in € und % aus
+
+                let mVal = 0;
+                let mPer = 0;
+
+                mVal = brutto - netto;
+                mPer = (brutto - netto) / netto * 100;              // passt
+
+
+                document.forms.myForm.mwstVal.value = mVal;
+                document.forms.myForm.mwstPer.value = mPer;
+            }
+            else if (netto != 0 && mwstVal != 0) {              //rechne Brutto und MWSt in % aus
+
+                let brutto = 0;
+                let mPer = 0;
+
+                brutto = netto + mwstVal;
+                mPer = (mwstVal / netto) * 100;                     // passt
+
+                document.forms.myForm.brutto.value = brutto;
+                document.forms.myForm.mwstPer.value = mPer;
+            }
+            else if (netto != 0 && mwstPer != 0) {              //rechne Brutto und MWSt in € aus
+
+                let brutto = 0;
+                let mVal = 0;
+
+                brutto = netto * (mwstPer / 100) + netto;           //passt
+                mVal = netto * (mwstPer / 100);
+
+                document.forms.myForm.brutto.value = brutto;
+                document.forms.myForm.mwstVal.value = mVal;
+            }
+            else if (brutto != 0 && mwstVal != 0) {             //rechne Netto und MWSt in % aus
+
+                let netto = 0;
+                let mPer = 0;
+
+                netto = brutto - mwstVal;
+                mPer = mwstVal / (brutto - mwstVal) * 100;       			 //passt
+
+                document.forms.myForm.netto.value = netto;
+                document.forms.myForm.mwstPer.value = mPer;
+            }
+            else if (brutto != 0 && mwstPer != 0) {             //rechne Netto und MWSt in € aus
+
+                let netto = 0;
+                let mVal = 0;
+
+                netto = brutto - (brutto / (100+mwstPer)) * mwstPer;      // passt
+                mVal = (brutto / (100 + mwstPer)) * mwstPer;
+
+                document.forms.myForm.netto.value = netto;
+                document.forms.myForm.mwstVal.value = mVal;
+            }
+            else if (mwstVal != 0 && mwstPer != 0) {            //rechne Brutto und Netto aus
+
+                let netto = 0;
+                let brutto = 0;
+
+                netto = (mwstVal / mwstPer) * 100 ;               			// passt
+                brutto = (mwstVal / mwstPer) * 100 + mwstVal;
+
+                document.forms.myForm.brutto.value = brutto;
+                document.forms.myForm.netto.value = netto;
+            }
+            else {                                              //es ist ein Wert zu wenig angegeben
+                alert("es ist ein Wert zu wenig angegeben")
+            }
+
+        };
+    </script>
+</body>
+</html>
